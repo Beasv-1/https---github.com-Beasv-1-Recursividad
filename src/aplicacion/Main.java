@@ -12,5 +12,10 @@ public class Main {
             System.out.println("No se encontró la salida del laberinto.");
         }
 
+       // int [] numeros = {3, -2,4,8,4,-5,7};
+        //System.out.println("lista de numero"+ numeros);
+        //System.out.println("numeros pares"+ Mates2.Filtrar(numeros, x -> x%2 == 0));
+        //System.out.println("numeros negativos"+ Mates2.Filtrar(numeros, x -> x < 0));
+
     }
 }
