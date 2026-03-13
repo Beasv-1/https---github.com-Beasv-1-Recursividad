@@ -9,21 +9,27 @@ public class Tablero {
 
 
     public boolean ensayar(int paso, int x, int y ){
-       for (int i = 0; i < 8; i++){
-       int nx= incrementox[i]+x;
-       int ny= incrementoy[i]+y;
-       if( aceptable(nx, ny)== true ){
-        anotar(paso+1, nx, ny);
-        if ( paso == n-1*n-1)
+        if ( paso == n*n)//salida
             return true;
-       }
+
+       for (int i = 0; i < 8; i++){
+         int nx= incrementox[i]+x;
+         int ny= incrementoy[i]+y;
+         
+            if( aceptable(nx, ny)== true ){
+              anotar(paso+1, nx, ny);
+       
+               if(ensayar(paso+1, nx, ny))
+                  return true;
+              else desanotar(paso+1, nx, ny);
+            }      
     }
          return false;
  
     }
 
     public boolean aceptable(int nx, int ny){
-        if (nx>0 && nx< n-1 && ny>0 && ny<n-1 && tablero[nx][ny]==0){
+        if (nx>=0 && nx< n && ny>=0 && ny<n && tablero[nx][ny]==0){
             return true;
         }
         else 
@@ -42,8 +48,9 @@ public class Tablero {
     public String toString(){
         for (int i = 0 ; i <n ; i++){
             for(int j = 0 ; j<n ; j++){
-                System.out.println(tablero[i][j]+ "\t");
+                System.out.print(tablero[i][j]+ "\t");
             }
+            System.out.println();
         }
         return "";
 
